@@ -1,0 +1,6 @@
+@echo off
+echo Starting MongoDB...
+start /b "" "C:\Program Files\MongoDB\Server\8.2\bin\mongod.exe" --dbpath "%LOCALAPPDATA%\MongoDB\data" --logpath "%LOCALAPPDATA%\MongoDB\mongod.log" --bind_ip 127.0.0.1 --port 27017
+timeout /t 2 /nobreak >nul
+echo Starting HomeServe Backend on port 8000...
+npm run dev
