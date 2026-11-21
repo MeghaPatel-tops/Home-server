@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # VITE_API_BASE_URL is marked secret but Vite intentionally inlines it into the
+  # client bundle; skip it in secrets scanning so the deploy isn't blocked.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_API_BASE_URL"
+
+# Single-page app: send all routes to index.html so React Router can handle them
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
